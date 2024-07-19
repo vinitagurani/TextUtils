@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Navbar(props) {
   let mystyle = {
     color : props.mode === 'dark'? 'white': 'black',
-    backgroundColor :  props.mode === 'light' ? 'light' :
+    backgroundColor :  props.mode === 'light' ? 'white' :
     props.mode === 'dark' ? 'grey' :
     props.mode === 'danger' ? '#eb7676' :
     props.mode === 'success' ? 'lightgreen' :

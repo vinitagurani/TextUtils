@@ -42,6 +42,26 @@ export default function TextForm(props) {
 
   const [text, setText] = useState("");
 
+  let btnStyle = {
+    color: props.mode === "light" ? "black" : "white" ,
+    backgroundColor :  props.mode === 'light' ? 'lightblue' :
+    props.mode === 'dark' ? 'grey' :
+    props.mode === 'danger' ? 'red' :
+    props.mode === 'success' ? 'green' :
+    props.mode === 'warning' ? 'a2600b' :
+    'blue' }
+
+  let textStyle = {
+    color: props.mode === "dark" ? "white" : "black" ,
+    backgroundColor :  props.mode === 'light' ? 'white' :
+    props.mode === 'dark' ? 'grey' :
+    props.mode === 'danger' ? '#eb7676' :
+    props.mode === 'success' ? 'lightgreen' :
+    props.mode === 'warning' ? 'yellow' :
+    'lightblue'
+
+  }
+
   return (
     <>
       <div
@@ -52,21 +72,21 @@ export default function TextForm(props) {
         <div className="mb-3">
           <textarea
             className="form-control my-2"
-            style={{backgroundColor: props.mode === 'light'? 'white':'#16466e', color: props.mode === "light" ? "black" : "white" }}
+            style={textStyle}
             id="myBox"
             rows="8"
             value={text}
             onChange={handleOnChange}
           ></textarea>
-          <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick} disabled = {text.length === 0}>
+          <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick} disabled = {text.length === 0} style={btnStyle}>
             Convert to Uppercase </button>
-          <button className="btn btn-primary my-1 mx-1" onClick={handleLoClick} disabled = {text.length === 0}>
+          <button className="btn btn-primary my-1 mx-1" onClick={handleLoClick} disabled = {text.length === 0} style={btnStyle}>
             Convert to Lowercase </button>
-          < button className="btn btn-primary my-1 mx-1" onClick={handleClearClick} disabled = {text.length === 0}>
+          < button className="btn btn-primary my-1 mx-1" onClick={handleClearClick} disabled = {text.length === 0} style={btnStyle}>
             Clear text </button>
-          <button className="btn btn-primary my-1 mx-1" onClick={handleSpacesClick} disabled = {text.length === 0}>
+          <button className="btn btn-primary my-1 mx-1" onClick={handleSpacesClick} disabled = {text.length === 0} style={btnStyle}>
             Clear extra spaces </button>
-          <button className="btn btn-primary my-1 mx-1" onClick={handleCopy} disabled = {text.length === 0}>
+          <button className="btn btn-primary my-1 mx-1" onClick={handleCopy} disabled = {text.length === 0} style={btnStyle}>
             Copy text </button>
         </div>
       </div>
