@@ -3,13 +3,11 @@ import "./App.css";
 import About from "./Components/About";
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
-import Alert from "./Alert";
+import Alert from "./Components/Alert";
 import {
     BrowserRouter as Router,
-    Switch,
     Routes,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 function App() {
@@ -25,20 +23,61 @@ function App() {
       setAlert(null);
     }, 2000);
   }
-  const toggleMode = () => {
-    if ( mode === 'light') {
-      setMode ('dark');
-      document.body.style.backgroundColor='#042743';
-      showAlert ("Dark Mode enabled", "success");
-      document.title = "TextUtils - Dark mode"
+  const removeClasses = ()=> {
+    document.body.classList.remove ('bg-light');
+    document.body.classList.remove ('bg-success');
+    document.body.classList.remove ('bg-danger');
+    document.body.classList.remove ('bg-warning');
+    document.body.classList.remove ('bg-dark');
     }
-    else {
-      setMode ('light');
-      document.body.style.backgroundColor = 'white'
+  const toggleMode = (cls) => {
+    removeClasses();
+    document.body.classList.add('bg-'+cls);
+    // if ( mode === 'light') {
+    //   setMode ('dark');
+    //   document.body.style.backgroundColor='#042743';
+    //   showAlert ("Dark Mode enabled", "success");
+    //   // document.title = "TextUtils - Dark mode"
+    // }
+    // else {
+    //   setMode ('light');
+    //   document.body.style.backgroundColor = 'white'
+    //   showAlert("Light mode enabled", "success");
+    //   // document.title = "TextUtils - Light mode"
+
+    // }
+    if (cls === 'dark') {
+      showAlert("Dark mode enabled", "success");   
+      setMode ('dark');
+      removeClasses();
+      document.body.style.backgroundColor = '#042743'
+    }
+    else if (cls === 'light') {
       showAlert("Light mode enabled", "success");
-      document.title = "TextUtils - Light mode"
+      setMode ('light');
+
 
     }
+    else if (cls === 'warning') {
+      showAlert("Yellow mode enabled", "success");
+      setMode ('warning');
+
+    }
+    else if (cls === 'danger') {
+      showAlert("Red mode enabled", "success");
+      setMode ('danger');
+
+    }
+    else if (cls === 'success') {
+      showAlert("Green mode enabled", "success");
+      setMode ('success');
+
+    }else if (cls === 'primary') {
+      showAlert("Blue mode enabled", "success");
+      setMode ('primary');
+
+    }
+
    }
   return (
     <>
@@ -47,8 +86,8 @@ function App() {
       <Alert alert={alert} />
       <div className="container my-3">
         <Routes>
-          <Route path="/about" element={<About/>} />
-          <Route path="/" element={<TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert} />} />
+          <Route path="/about" element={<About mode = {mode}/>} />
+          <Route path="/" element={<TextForm heading=" Try TextUtils - word counter, character counter, convert cases, remove extra spaces." mode={mode} showAlert={showAlert} />} />
         </Routes>
       </div>
     </Router>
