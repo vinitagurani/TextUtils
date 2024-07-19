@@ -3,21 +3,22 @@ import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
-  const setNavBarColor = ()=> {
-    if (props.mode === 'light' || props.mode === 'warning' || props.mode === 'danger' || props.mode === 'primary' || props.mode === 'success') {
-      return 'light';
-    }
-    else {
-      return 'dark';
-    }
-  }
+  let mystyle = {
+    color : props.mode === 'dark'? 'white': 'black',
+    backgroundColor :  props.mode === 'light' ? 'light' :
+    props.mode === 'dark' ? 'grey' :
+    props.mode === 'danger' ? '#eb7676' :
+    props.mode === 'success' ? 'lightgreen' :
+    props.mode === 'warning' ? 'yellow' :
+    'lightblue' ,
+  width: '100%'}
   return (
         // bootstrap <code></code>
 
     <div >
-      <nav className={`navbar navbar-expand-lg navbar-${setNavBarColor()} bg-${setNavBarColor()}`}>
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+      <nav className={`navbar navbar-expand-lg navbar-${mystyle} bg-${mystyle}`} >
+        <div className="container-fluid" style={mystyle}>
+          <Link className="navbar-brand" to="/" style={mystyle}>
             {props.title}
           </Link>
           <button
@@ -34,12 +35,12 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className="nav-link" aria-current="page" to="/" style={mystyle}>
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/About">
+                <Link className="nav-link" to="/About"  style={mystyle}>
                   {props.aboutText}
                 </Link>
               </li>
@@ -50,7 +51,7 @@ export default function Navbar(props) {
               <div className="bg-danger rounded mx-2" onClick={() => {props.toggleMode('danger')}} style = {{height: '30px', width : '30px' , cursor: 'pointer'}}></div>
               <div className="bg-success rounded mx-2" onClick={() => {props.toggleMode('success')}} style = {{height: '30px', width : '30px', cursor: 'pointer'}}></div>
               <div className="bg-warning rounded mx-2" onClick={() => {props.toggleMode('warning')}} style = {{height: '30px', width : '30px', cursor: 'pointer'}}></div>
-              <div className="bg-light rounded mx-2" onClick={() => {props.toggleMode('light')}} style = {{height: '30px', width : '30px', cursor: 'pointer'}}></div>
+              <div className="bg-light rounded mx-2" onClick={() => {props.toggleMode('light')}} style = {{height: '30px', width : '30px', cursor: 'pointer', border: 'black 2px solid'}}></div>
               <div className="bg-dark rounded mx-2" onClick={() => {props.toggleMode('dark')}} style = {{height: '30px', width : '30px', cursor: 'pointer'}}></div>
 
             </div>

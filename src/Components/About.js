@@ -21,8 +21,14 @@ export default function About(props) {
 
     let mystyle = {
       color : props.mode === 'dark'? 'white': 'black',
-      backgroundColor : props.mode === 'dark'? 'rgb(36 74 104)' : 'white'
-        }
+      backgroundColor :  props.mode === 'light' ? 'light' :
+      props.mode === 'dark' ? 'grey' :
+      props.mode === 'danger' ? '#eb7676' :
+      props.mode === 'success' ? 'lightgreen' :
+      props.mode === 'warning' ? 'yellow' :
+      'lightblue' }
+    
+        
 
   return (
     <div className="container" style={{ color : props.mode === 'dark'? 'white': 'black',}}>

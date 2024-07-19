@@ -32,14 +32,12 @@ export default function TextForm(props) {
   };
   const handleCopy = () => {
     console.log ("Copied text");
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     document.getSelection().removeAllRanges();
     props.showAlert("Text is copied", "success");
   }
   const wordCount = () => {
-   return text.split(" ").filter((element) => {return element.length !== 0}).length;
+   return text.split(/\s+/).filter((element) => {return element.length !== 0}).length;
   }
 
   const [text, setText] = useState("");

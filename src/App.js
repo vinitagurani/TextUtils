@@ -21,7 +21,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 2000);
+    }, 3000);
   }
   const removeClasses = ()=> {
     document.body.classList.remove ('bg-light');
@@ -48,9 +48,10 @@ function App() {
     // }
     if (cls === 'dark') {
       showAlert("Dark mode enabled", "success");   
+      
+      // removeClasses();
       setMode ('dark');
-      removeClasses();
-      document.body.style.backgroundColor = '#042743'
+      // document.body.style.backgroundColor = '#042743'
     }
     else if (cls === 'light') {
       showAlert("Light mode enabled", "success");
