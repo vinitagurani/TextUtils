@@ -9,7 +9,6 @@ export default function TextForm(props) {
     setText(newText);
     props.showAlert("Text converted to uppercase", "success");
   };
-
   const handleLoClick = () => {
     console.log("lowercase clicked");
     let newText = text.toLowerCase();
@@ -48,7 +47,7 @@ export default function TextForm(props) {
     props.mode === 'dark' ? 'grey' :
     props.mode === 'danger' ? 'red' :
     props.mode === 'success' ? 'green' :
-    props.mode === 'warning' ? 'a2600b' :
+    props.mode === 'warning' ? '#a2600b' :
     'blue' }
 
   let textStyle = {
@@ -65,7 +64,7 @@ export default function TextForm(props) {
   return (
     <>
       <div
-        className="container"
+        // className="container"
         style={{color: props.mode === "light" ? "black" : "white" }}>
 
         <h2 className="my-3">{props.heading}</h2>
@@ -96,7 +95,7 @@ export default function TextForm(props) {
       >
         <h2>Your text summary</h2>
         <p>Number of words in your paragraph: {wordCount()}</p>
-        <p>Number of character in you paragraph: {text.length}</p>
+        <p>Number of character in your paragraph: {text.length}</p>
         <p>{0.008 * wordCount()} minutes to read</p>
         <h2>Preview</h2>
         <p>{text.length>0 ? text: "Nothing to preview"}</p>

@@ -11,7 +11,7 @@ export default function Navbar(props) {
     props.mode === 'success' ? 'lightgreen' :
     props.mode === 'warning' ? 'yellow' :
     'lightblue' ,
-  width: '100%'}
+  }
   return (
         // bootstrap <code></code>
 
